@@ -2,6 +2,7 @@ from textual import on
 from textual.app import ComposeResult
 from textual.binding import Binding
 from textual.containers import Vertical
+from rich.text import Text as RichText
 from textual.screen import ModalScreen
 from textual.widgets import Input
 
@@ -15,9 +16,19 @@ class RenameChat(ModalScreen[str]):
     def compose(self) -> ComposeResult:
         with Vertical():
             title_input = Input(placeholder="Enter a title...")
-            title_input.border_subtitle = (
-                "[[white]enter[/]] Save  [[white]esc[/]] Cancel"
-            )
+
+            rich_text = RichText()
+            rich_text.append("[")
+            rich_text.append("enter", style="#FFFFFF")
+            rich_text.append("]")
+            rich_text.append(" Save  ")
+            rich_text.append("[")
+            rich_text.append("esc", style="#FFFFFF")
+            rich_text.append("]")
+            rich_text.append(" Cancel")
+            
+            title_input.border_subtitle = rich_text
+
             yield title_input
 
     @on(Input.Submitted)

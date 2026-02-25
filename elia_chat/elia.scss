@@ -88,19 +88,21 @@ Chat {
     dock: top;
     & ResponseStatus {
       display: none;
-      height: 2;
-      width: auto;
+      height: auto;
+      min-height: 2;
+      width: 21;
       margin-top: 1;
       margin-right: 2;
-      align: right top;
       & Label {
          width: auto;
+         height: 1;
+         dock: right;
       }
       & LoadingIndicator {
         width: auto;
-        color: $primary;
         height: 1;
-        margin-top: 1;
+        dock: right;
+        offset-y: 1;
       }
       &.-awaiting-response {
          LoadingIndicator {
@@ -115,17 +117,17 @@ Chat {
    }
    & ChatHeader {
      width: 1fr;
-     height: auto;  
+     height: auto;
      padding: 1 2;
      background: $background;
      &:inline {
        padding: 0 2 1 2;
-    }
-    & #model-static {
-      color: $text-muted;
-    }
+     }
+     & #model-static {
+       color: $text-muted;
+     }
+   }
   }
-}
   ChatPromptInput {
     height: auto;
     max-height: 50%;

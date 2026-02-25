@@ -58,9 +58,11 @@ class Elia(App[None]):
         put users into the chat window, rather than going to the home screen.
         """
 
+        # Store the config theme for use in on_mount
+        self._config_theme = config.theme or "nebula"
         super().__init__()
 
-    theme: Reactive[str | None] = reactive(None, init=False)
+    theme: Reactive[str] = reactive("textual-dark", init=False)
 
     @property
     def runtime_config(self) -> RuntimeConfig:
@@ -73,7 +75,7 @@ class Elia(App[None]):
 
     async def on_mount(self) -> None:
         await self.push_screen(HomeScreen(self.runtime_config_signal))
-        self.theme = self.launch_config.theme
+        self.theme = self._config_theme
         if self.startup_prompt:
             await self.launch_chat(
                 prompt=self.startup_prompt,
@@ -118,20 +120,16 @@ class Elia(App[None]):
             await self.push_screen(HelpScreen())
 
     def get_css_variables(self) -> dict[str, str]:
-        if self.theme:
-            theme = self.themes.get(self.theme)
-            if theme:
-                color_system = theme.to_color_system().generate()
-            else:
-                color_system = {}
+        theme = self.themes.get(self.theme)
+        if theme:
+            color_system = theme.to_color_system().generate()
         else:
             color_system = {}
 
         return {**super().get_css_variables(), **color_system}
 
-    def watch_theme(self, theme: str | None) -> None:
+    def watch_theme(self, theme: str) -> None:
         self.refresh_css(animate=False)
-        self.screen._update_styles()
 
     @property
     def theme_object(self) -> Theme | None:

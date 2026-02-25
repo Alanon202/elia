@@ -47,15 +47,7 @@ class EliaChatModel(BaseModel):
 
 def get_builtin_openai_models() -> list[EliaChatModel]:
     return [
-        EliaChatModel(
-            id="elia-gpt-3.5-turbo",
-            name="gpt-3.5-turbo",
-            display_name="GPT-3.5 Turbo",
-            provider="OpenAI",
-            product="ChatGPT",
-            description="Fast & inexpensive model for simple tasks.",
-            temperature=0.7,
-        ),
+        # GPT-4o series
         EliaChatModel(
             id="elia-gpt-4o",
             name="gpt-4o",
@@ -66,6 +58,110 @@ def get_builtin_openai_models() -> list[EliaChatModel]:
             temperature=0.7,
         ),
         EliaChatModel(
+            id="elia-gpt-4o-mini",
+            name="gpt-4o-mini",
+            display_name="GPT-4o Mini",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Fast, affordable small model for focused tasks.",
+            temperature=0.7,
+        ),
+        # GPT-4.1 series
+        EliaChatModel(
+            id="elia-gpt-4.1",
+            name="gpt-4.1",
+            display_name="GPT-4.1",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Most capable GPT-4 series model for complex tasks.",
+            temperature=0.7,
+        ),
+        EliaChatModel(
+            id="elia-gpt-4.1-mini",
+            name="gpt-4.1-mini",
+            display_name="GPT-4.1 Mini",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Beats GPT-4o on many benchmarks, efficient small model.",
+            temperature=0.7,
+        ),
+        EliaChatModel(
+            id="elia-gpt-4.1-nano",
+            name="gpt-4.1-nano",
+            display_name="GPT-4.1 Nano",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Smallest and fastest GPT-4.1 model.",
+            temperature=0.7,
+        ),
+        # o1 reasoning series
+        EliaChatModel(
+            id="elia-o1",
+            name="o1",
+            display_name="o1",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Advanced reasoning model for STEM and complex tasks.",
+            temperature=1.0,
+        ),
+        EliaChatModel(
+            id="elia-o1-mini",
+            name="o1-mini",
+            display_name="o1 Mini",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Faster reasoning model for focused STEM tasks.",
+            temperature=1.0,
+        ),
+        EliaChatModel(
+            id="elia-o1-pro",
+            name="o1-pro",
+            display_name="o1 Pro",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Most powerful reasoning model for expert-level tasks.",
+            temperature=1.0,
+        ),
+        # o3 reasoning series
+        EliaChatModel(
+            id="elia-o3",
+            name="o3",
+            display_name="o3",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Next-generation reasoning model.",
+            temperature=1.0,
+        ),
+        EliaChatModel(
+            id="elia-o3-pro",
+            name="o3-pro",
+            display_name="o3 Pro",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Most advanced reasoning model available.",
+            temperature=1.0,
+        ),
+        # o4-mini reasoning series
+        EliaChatModel(
+            id="elia-o4-mini",
+            name="o4-mini",
+            display_name="o4 Mini",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Fast reasoning model with advanced capabilities.",
+            temperature=1.0,
+        ),
+        EliaChatModel(
+            id="elia-o4-mini-high",
+            name="o4-mini-high",
+            display_name="o4 Mini High",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Higher capability version of o4-mini.",
+            temperature=1.0,
+        ),
+        # Legacy models
+        EliaChatModel(
             id="elia-gpt-4-turbo",
             name="gpt-4-turbo",
             display_name="GPT-4 Turbo",
@@ -74,68 +170,142 @@ def get_builtin_openai_models() -> list[EliaChatModel]:
             description="Previous high-intelligence model.",
             temperature=0.7,
         ),
+        EliaChatModel(
+            id="elia-gpt-3.5-turbo",
+            name="gpt-3.5-turbo",
+            display_name="GPT-3.5 Turbo",
+            provider="OpenAI",
+            product="ChatGPT",
+            description="Fast & inexpensive model for simple tasks.",
+            temperature=0.7,
+        ),
     ]
 
 
 def get_builtin_anthropic_models() -> list[EliaChatModel]:
     return [
+        # Claude 4 series
+        EliaChatModel(
+            id="elia-claude-opus-4",
+            name="claude-opus-4-20250514",
+            display_name="Claude Opus 4",
+            provider="Anthropic",
+            product="Claude 4",
+            description="Most intelligent model for building agents and coding.",
+        ),
+        EliaChatModel(
+            id="elia-claude-sonnet-4",
+            name="claude-sonnet-4-20250514",
+            display_name="Claude Sonnet 4",
+            provider="Anthropic",
+            product="Claude 4",
+            description="Best combination of speed and intelligence.",
+        ),
+        # Claude 3.7 series
+        EliaChatModel(
+            id="elia-claude-3-7-sonnet",
+            name="claude-3-7-sonnet-20250219",
+            display_name="Claude 3.7 Sonnet",
+            provider="Anthropic",
+            product="Claude 3.7",
+            description="Most intelligent Claude 3 series model.",
+        ),
+        # Claude 3.5 series
+        EliaChatModel(
+            id="elia-claude-3-5-sonnet",
+            name="claude-3-5-sonnet-20241022",
+            display_name="Claude 3.5 Sonnet (Latest)",
+            provider="Anthropic",
+            product="Claude 3.5",
+            description="Anthropic's most intelligent model - latest version.",
+        ),
         EliaChatModel(
             id="elia-claude-3-5-sonnet-20240620",
             name="claude-3-5-sonnet-20240620",
-            display_name="Claude 3.5 Sonnet",
+            display_name="Claude 3.5 Sonnet (Jun 2024)",
             provider="Anthropic",
             product="Claude 3.5",
-            description=("Anthropic's most intelligent model"),
+            description="Anthropic's most intelligent model - earlier version.",
         ),
         EliaChatModel(
-            id="elia-claude-3-haiku-20240307",
-            name="claude-3-haiku-20240307",
-            display_name="Claude 3 Haiku",
+            id="elia-claude-3-5-haiku",
+            name="claude-3-5-haiku-20241022",
+            display_name="Claude 3.5 Haiku",
             provider="Anthropic",
-            product="Claude 3",
-            description=(
-                "Fastest and most compact model for near-instant responsiveness"
-            ),
+            product="Claude 3.5",
+            description="Fastest model with near-frontier intelligence.",
         ),
+        # Claude 3 series (legacy)
         EliaChatModel(
-            id="elia-claude-3-sonnet-20240229",
-            name="claude-3-sonnet-20240229",
-            display_name="Claude 3 Sonnet",
-            provider="Anthropic",
-            product="Claude 3",
-            description=(
-                "Ideal balance of intelligence and speed for enterprise workloads"
-            ),
-        ),
-        EliaChatModel(
-            id="elia-claude-3-opus-20240229",
+            id="elia-claude-3-opus",
             name="claude-3-opus-20240229",
             display_name="Claude 3 Opus",
             provider="Anthropic",
             product="Claude 3",
-            description="Excels at writing and complex tasks",
+            description="Excels at writing and complex tasks.",
+        ),
+        EliaChatModel(
+            id="elia-claude-3-sonnet",
+            name="claude-3-sonnet-20240229",
+            display_name="Claude 3 Sonnet",
+            provider="Anthropic",
+            product="Claude 3",
+            description="Ideal balance of intelligence and speed.",
+        ),
+        EliaChatModel(
+            id="elia-claude-3-haiku",
+            name="claude-3-haiku-20240307",
+            display_name="Claude 3 Haiku",
+            provider="Anthropic",
+            product="Claude 3",
+            description="Fastest and most compact for quick responses.",
         ),
     ]
 
 
 def get_builtin_google_models() -> list[EliaChatModel]:
     return [
+        # Gemini 2.5 series
         EliaChatModel(
-            id="elia-gemini/gemini-1.5-pro-latest",
-            name="gemini/gemini-1.5-pro-latest",
-            display_name="Gemini 1.5 Pro",
+            id="elia-gemini-2.5-pro",
+            name="gemini/gemini-2.5-pro",
+            display_name="Gemini 2.5 Pro",
             provider="Google",
             product="Gemini",
-            description="Excels at reasoning tasks including code and text generation, "
-            "text editing, problem solving, data extraction and generation",
+            description="Most capable Gemini model for complex reasoning tasks.",
         ),
         EliaChatModel(
-            id="elia-gemini/gemini-1.5-flash-latest",
-            name="gemini/gemini-1.5-flash-latest",
-            display_name="Gemini 1.5 Flash",
+            id="elia-gemini-2.5-flash",
+            name="gemini/gemini-2.5-flash",
+            display_name="Gemini 2.5 Flash",
             provider="Google",
             product="Gemini",
-            description="Fast and versatile performance across a variety of tasks",
+            description="Fast and versatile model for a wide range of tasks.",
+        ),
+        EliaChatModel(
+            id="elia-gemini-2.5-flash-lite",
+            name="gemini/gemini-2.5-flash-lite",
+            display_name="Gemini 2.5 Flash Lite",
+            provider="Google",
+            product="Gemini",
+            description="Most efficient model for high-frequency, simple tasks.",
+        ),
+        # Gemini 2.0 series
+        EliaChatModel(
+            id="elia-gemini-2.0-flash",
+            name="gemini/gemini-2.0-flash",
+            display_name="Gemini 2.0 Flash",
+            provider="Google",
+            product="Gemini",
+            description="Fast multimodal model with native tool use.",
+        ),
+        EliaChatModel(
+            id="elia-gemini-2.0-flash-lite",
+            name="gemini/gemini-2.0-flash-lite",
+            display_name="Gemini 2.0 Flash Lite",
+            provider="Google",
+            product="Gemini",
+            description="Lightweight model for simple, high-volume tasks.",
         ),
     ]
 
@@ -156,7 +326,7 @@ class LaunchConfig(BaseModel):
 
     model_config = ConfigDict(frozen=True)
 
-    default_model: str = Field(default="elia-gpt-4o")
+    default_model: str = Field(default="elia-gpt-4o-mini")
     """The ID or name of the default model."""
     system_prompt: str = Field(
         default=os.getenv(

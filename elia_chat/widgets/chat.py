@@ -10,11 +10,12 @@ from elia_chat import constants
 from textual import log, on, work, events
 from textual.app import ComposeResult
 from textual.binding import Binding
-from textual.containers import VerticalScroll
+from textual.containers import Horizontal, VerticalScroll
 from textual.css.query import NoMatches
 from textual.message import Message
 from textual.reactive import reactive
 from textual.widget import Widget
+from textual.widgets import Label
 
 from elia_chat.chats_manager import ChatsManager
 from elia_chat.models import ChatData, ChatMessage
@@ -89,8 +90,9 @@ class Chat(Widget):
         content: str
 
     def compose(self) -> ComposeResult:
-        yield ResponseStatus()
-        yield ChatHeader(chat=self.chat_data, model=self.model)
+        with Horizontal(id="chat-header-container"):
+            yield ChatHeader(chat=self.chat_data, model=self.model)
+            yield ResponseStatus()
 
         with VerticalScroll(id="chat-container") as vertical_scroll:
             vertical_scroll.can_focus = False

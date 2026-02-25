@@ -82,19 +82,50 @@ Tooltip {
 
 
 Chat {
-  ChatHeader {
+  #chat-header-container {
     width: 100%;
     height: auto;
-    padding: 1 2;
-    background: $background;
-    &:inline {
-      padding: 0 2 1 2;
+    dock: top;
+    & ResponseStatus {
+      display: none;
+      height: 2;
+      width: auto;
+      margin-top: 1;
+      margin-right: 2;
+      align: right top;
+      & Label {
+         width: auto;
+      }
+      & LoadingIndicator {
+        width: auto;
+        color: $primary;
+        height: 1;
+        margin-top: 1;
+      }
+      &.-awaiting-response {
+         LoadingIndicator {
+           color: $primary;
+         }
+      }
+      &.-agent-responding {
+         LoadingIndicator {
+           color: $secondary;
+         }
+      }
+   }
+   & ChatHeader {
+     width: 1fr;
+     height: auto;  
+     padding: 1 2;
+     background: $background;
+     &:inline {
+       padding: 0 2 1 2;
     }
-
     & #model-static {
       color: $text-muted;
     }
   }
+}
   ChatPromptInput {
     height: auto;
     max-height: 50%;
@@ -102,37 +133,6 @@ Chat {
     background: $background;
     &.-submit-blocked {
       border: round $error 50%;
-    }
-  }
-
-  ResponseStatus {
-    dock: top;
-    align-horizontal: right;
-    display: none;
-    layer: overlay;
-    height: 2;
-    width: auto;
-    margin-top: 1;
-    margin-right: 2;
-    & Label {
-      width: auto;
-    }
-    & LoadingIndicator {
-      width: auto;
-      color: $primary;
-      height: 1;
-      margin-top: 1;
-      dock: right;
-    }
-    &.-awaiting-response {
-      LoadingIndicator {
-        color: $primary;
-      }
-    }
-    &.-agent-responding {
-      LoadingIndicator {
-        color: $secondary;
-      }
     }
   }
 }

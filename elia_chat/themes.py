@@ -169,4 +169,31 @@ BUILTIN_THEMES: dict[str, Theme] = {
         surface="#1A1A1A",  # Very Dark Gray
         panel="#2A2A2A",  # Dark Gray
     ),
+    "dracula": Theme(
+        name="dracula",
+        primary="#6272a4",
+        secondary="#FF79C6",
+        warning="#ffb86c",
+        error="#FF6E67",
+        success="#5AF78E",
+        accent="#BD93F9",
+        dark=True,
+        background="#282A36",
+        surface="#F8F8F2",
+        panel="#474645",
+    ),
+    "gruvbox": Theme(
+        name="gruvbox",
+        primary="#fbf1c7",
+        secondary="#98971a",
+        warning="#8ec07c",
+        error="#fb4934",
+        success="#b8bb26",
+        accent="#b8bb26",
+        dark=True,
+        background="#282828",
+        surface="#32302f",
+        panel="#665c54",
+    ),
+
 }

@@ -60,7 +60,7 @@ class ChatList(OptionList):
     BINDINGS = [
         Binding(
             "escape",
-            "app.focus('home-prompt')",
+            "screen.focus('#home-prompt')",
             "Focus prompt",
             key_display="esc",
             tooltip="Return focus to the prompt input.",

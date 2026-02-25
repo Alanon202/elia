@@ -228,7 +228,7 @@ class Chatbox(Widget, can_focus=True):
         ),
         Binding(
             key="escape",
-            action="screen.focus('prompt')",
+            action="screen.focus('#prompt')",
             description="Focus prompt",
             key_display="esc",
         ),

@@ -120,10 +120,10 @@ class ChatList(OptionList):
         Args:
             new_highlighted: The index to highlight after refresh.
         """
-        self.options = await self.load_chat_list_items()
+        chat_items = await self.load_chat_list_items()
         old_highlighted = self.highlighted
         self.clear_options()
-        self.add_options(self.options)
+        self.add_options(chat_items)
         self.border_title = self.get_border_title()
         if new_highlighted > -1:
             self.highlighted = new_highlighted

@@ -4,6 +4,7 @@ from textual.binding import Binding
 from textual.reactive import reactive
 from textual.widgets import TextArea
 from textual.message import Message
+from textual.content import Content
 
 
 class PromptInput(TextArea):
@@ -57,7 +58,7 @@ class PromptInput(TextArea):
     async def prompt_changed(self, event: TextArea.Changed) -> None:
         text_area = event.text_area
         if text_area.text.strip() != "":
-            text_area.border_subtitle = "[[white]^j[/]] Send message"
+            text_area.border_subtitle = Content.from_markup("[white]^j[/] Send message")
         else:
             text_area.border_subtitle = None
 

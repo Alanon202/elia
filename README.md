@@ -11,15 +11,21 @@
 ## Introduction
 
 `elia` is an application for interacting with LLMs which runs entirely in your terminal, and is designed to be keyboard-focused, efficient, and fun to use!
+
 It stores your conversations in a local SQLite database, and allows you to interact with a variety of models.
+
 Speak with proprietary models such as ChatGPT and Claude, or with local models running through `ollama` or LocalAI.
+
+This fork has been updated and modified (by me and qwencoder) to work with modern versions of Python. It’s not in any repos, so only manual installs are supported (see below).
+
+Everything I use seems to work. But a lot of it might not. YMMV. If you find something obviously broken, report it and I’ll try to fix it if I can.
 
 ## Installation
 
 Install Elia with [pipx](https://github.com/pypa/pipx):
 
 ```bash
-pipx install --python 3.11 elia-chat
+pipx install git+https://github.com/Alanon202/elia.git
 ```
 
 Depending on the model you wish to use, you may need to set one or more environment variables (e.g. `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GEMINI_API_KEY` etc).
@@ -76,7 +82,7 @@ default_model = "gpt-4o"
 # the system prompt on launch
 system_prompt = "You are a helpful assistant who talks like a pirate."
 
-# choose from "nebula", "cobalt", "twilight", "hacker", "alpine", "galaxy", "nautilus", "monokai", "textual"
+# choose from "nebula", "cobalt", "twilight", "hacker", "alpine", "galaxy", "nautilus", "monokai", "textual", "dracula", "gruvbox"
 theme = "galaxy"
 
 # change the syntax highlighting theme of code in messages
@@ -164,5 +170,5 @@ elia reset
 ## Uninstalling
 
 ```bash
-pipx uninstall elia-chat
+pipx uninstall elia_chat
 ```

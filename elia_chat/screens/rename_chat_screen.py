@@ -19,11 +19,11 @@ class RenameChat(ModalScreen[str]):
 
             rich_text = RichText()
             rich_text.append("[")
-            rich_text.append("enter", style="#FFFFFF")
+            rich_text.append("enter", style="#DEDEDE")
             rich_text.append("]")
             rich_text.append(" Save  ")
             rich_text.append("[")
-            rich_text.append("esc", style="#FFFFFF")
+            rich_text.append("esc", style="#DEDEDE")
             rich_text.append("]")
             rich_text.append(" Cancel")
             

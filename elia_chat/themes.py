@@ -17,20 +17,24 @@ class Theme(BaseModel):
     success: str | None = None
     accent: str | None = None
     dark: bool = True
+    variables: dict[str, str] = Field(default_factory=dict)
+    """Additional CSS variables to include with this theme."""
 
     def to_color_system(self) -> ColorSystem:
         """Convert this theme to a ColorSystem."""
-        return ColorSystem(
-            **self.model_dump(
-                exclude={
-                    "text_area",
-                    "syntax",
-                    "variable",
-                    "url",
-                    "method",
-                }
-            )
+        data = self.model_dump(
+            exclude={
+                "text_area",
+                "syntax",
+                "variable",
+                "url",
+                "method",
+                "name",  # ColorSystem doesn't have a name field
+            }
         )
+        # Remove None values - ColorSystem expects only defined colors
+        filtered_data = {k: v for k, v in data.items() if v is not None}
+        return ColorSystem(**filtered_data)
 
 
 def load_user_themes() -> dict[str, Theme]:

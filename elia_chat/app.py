@@ -73,6 +73,22 @@ class Elia(App[None]):
         self._runtime_config = new_runtime_config
         self.runtime_config_signal.publish(self.runtime_config)
 
+    def _validate_theme(self, theme_name: str) -> str:
+        """Override to allow custom themes that aren't registered with Textual."""
+        if theme_name in self.themes:
+            return theme_name
+        # Fall back to Textual's validation for built-in themes
+        return super()._validate_theme(theme_name)
+
+    @property
+    def current_theme(self):
+        """Override to return our custom theme object."""
+        theme_name = self.theme
+        if theme_name in self.themes:
+            return self.themes[theme_name]
+        # Fall back to Textual's current_theme for built-in themes
+        return super().current_theme
+
     async def on_mount(self) -> None:
         await self.push_screen(HomeScreen(self.runtime_config_signal))
         self.theme = self._config_theme
@@ -120,13 +136,18 @@ class Elia(App[None]):
             await self.push_screen(HelpScreen())
 
     def get_css_variables(self) -> dict[str, str]:
-        theme = self.themes.get(self.theme)
-        if theme:
-            color_system = theme.to_color_system().generate()
+        theme = self.current_theme
+        if hasattr(theme, 'to_color_system'):
+            # Our custom Theme object
+            color_system = theme.to_color_system()
+            css_vars = color_system.generate()
+            # Add any custom CSS variables from the theme
+            if theme.variables:
+                css_vars.update(theme.variables)
+            return css_vars
         else:
-            color_system = {}
-
-        return {**super().get_css_variables(), **color_system}
+            # Textual's built-in ColorSystem
+            return theme.generate()
 
     def watch_theme(self, theme: str) -> None:
         self.refresh_css(animate=False)
